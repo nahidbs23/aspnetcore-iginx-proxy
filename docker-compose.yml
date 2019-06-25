@@ -4,7 +4,7 @@ services:
   gateway:
     image: jwilder/whoami
     environment:
-      - VIRTUAL_HOST=35.225.70.10
+      - VIRTUAL_HOST=dotnetcore.tk,www.dotnetcore.tk
     links:
       - appone
       - apptwo
