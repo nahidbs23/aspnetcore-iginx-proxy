@@ -1,24 +1,19 @@
 version: '3.4'
 
 services:
-  gateway:
-    image: jwilder/whoami
-    environment:
-      - VIRTUAL_HOST=dotnetcore.tk,www.dotnetcore.tk
-      - VIRTUAL_PORT=8000
-    links:
-      - appone
-      - apptwo
-
   appone:
     image: ${DOCKER_REGISTRY-}dockerproxyappone
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
+    environment:
+      - VIRTUAL_HOST=dotnetcore.tk
 
   apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
+    environment:
+      - VIRTUAL_HOST=api.dotnetcore.tk
 
