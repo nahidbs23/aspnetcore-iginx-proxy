@@ -3,6 +3,8 @@ version: '3.4'
 services:
   appone:
     image: ${DOCKER_REGISTRY-}dockerproxyappone
+    ports:
+      - 80
     expose:
       - 80
     environment:
@@ -13,6 +15,8 @@ services:
 
   apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
+    ports:
+      - 80
     expose:
       - 80
     environment:
