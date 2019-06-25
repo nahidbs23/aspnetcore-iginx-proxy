@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  docker.proxy.appone:
+    image: ${DOCKER_REGISTRY-}dockerproxyappone
+    build:
+      context: .
+      dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
+
+  docker.proxy.apptwo:
+    image: ${DOCKER_REGISTRY-}dockerproxyapptwo
+    build:
+      context: .
+      dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
+
