@@ -1,12 +1,20 @@
 version: '3.4'
 
 services:
-  appone:
-    image: ${DOCKER_REGISTRY-}dockerproxyappone
+
+  gateway:
+    image: jwilder/whoami
     expose:
       - 80
     environment:
-      - VIRTUAL_HOST=dotnetcore.tk,www.dotnetcore.tk
+      - VIRTUAL_HOST=dotnetcore.tk
+    links:
+      - appone
+      - apptwo
+    network_mode: bridge
+  
+  appone:
+    image: ${DOCKER_REGISTRY-}dockerproxyappone
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
@@ -14,10 +22,6 @@ services:
 
   apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
-    expose:
-      - 80
-    environment:
-      - VIRTUAL_HOST=api.dotnetcore.tk
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
