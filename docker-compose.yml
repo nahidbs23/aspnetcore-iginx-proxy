@@ -10,6 +10,7 @@ services:
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
+    network_mode: bridge
 
   apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
@@ -20,4 +21,5 @@ services:
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
+    network_mode: bridge
 
