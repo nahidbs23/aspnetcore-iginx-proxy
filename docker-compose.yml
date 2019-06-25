@@ -1,13 +1,21 @@
 version: '3.4'
 
 services:
-  docker.proxy.appone:
+  gateway:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=35.225.70.10
+    links:
+      - appone
+      - apptwo
+
+  appone:
     image: ${DOCKER_REGISTRY-}dockerproxyappone
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
 
-  docker.proxy.apptwo:
+  apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
     build:
       context: .
