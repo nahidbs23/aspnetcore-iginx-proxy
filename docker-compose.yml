@@ -3,21 +3,21 @@ version: '3.4'
 services:
   appone:
     image: ${DOCKER_REGISTRY-}dockerproxyappone
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=dotnetcore.tk,www.dotnetcore.tk
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
-    expose:
-      - "80"
-    environment:
-      - VIRTUAL_HOST=dotnetcore.tk
 
   apptwo:
     image: ${DOCKER_REGISTRY-}dockerproxyapptwo
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=api.dotnetcore.tk
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
-    expose:
-      - "80"
-    environment:
-      - VIRTUAL_HOST=api.dotnetcore.tk
 
