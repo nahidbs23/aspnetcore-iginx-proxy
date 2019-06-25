@@ -8,6 +8,7 @@ services:
       - 80
     environment:
       - VIRTUAL_HOST=dotnetcore.tk
+      - VIRTUAL_PORT=80,8000
     links:
       - appone
       - apptwo
