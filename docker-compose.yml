@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
+    expose:
+      - "80"
     environment:
       - VIRTUAL_HOST=dotnetcore.tk
 
@@ -14,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
+    expose:
+      - "80"
     environment:
       - VIRTUAL_HOST=api.dotnetcore.tk
 
