@@ -24,18 +24,6 @@ services:
     depends_on:
       - gateway
 
-  letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: nginx-proxy-ssl
-    environment:
-      - NGINX_PROXY_CONTAINER=nginx-proxy
-    volumes:
-      - certs:/etc/nginx/certs:rw
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    network_mode: bridge
-    depends_on:
-      - nginx-proxy
-
   gateway:
     image: jwilder/whoami
     expose:
