@@ -6,8 +6,9 @@ namespace Docker.Proxy.AppOne.Controllers
     public class AppController : Controller
     {
         [HttpGet("")]
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }

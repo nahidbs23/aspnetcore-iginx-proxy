@@ -3,11 +3,12 @@
 namespace Docker.Proxy.AppTwo.Controllers
 {
     [Route("app2")]
-    public class AppControllerController : Controller
+    public class AppController : Controller
     {
         [HttpGet("")]
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }
