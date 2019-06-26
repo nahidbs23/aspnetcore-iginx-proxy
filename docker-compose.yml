@@ -1,4 +1,4 @@
-version: '3.4'
+version: '2'
 
 services:
 
@@ -23,6 +23,18 @@ services:
       - apptwo
     depends_on:
       - gateway
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginx-proxy-ssl
+    volumes_from:
+      - nginx-proxy
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    network_mode: bridge
+    depends_on:
+      - nginx-proxy
 
   gateway:
     image: jwilder/whoami
