@@ -11,5 +11,11 @@ namespace Docker.Proxy.AppOne.Controllers
             ViewBag.Id = id;
             return View();
         }
+
+        [HttpGet("{id}/test")]
+        public IActionResult Netsted(string id)
+        {
+            return View();
+        }
     }
 }

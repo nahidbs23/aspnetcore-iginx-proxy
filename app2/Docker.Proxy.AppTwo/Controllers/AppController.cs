@@ -11,5 +11,12 @@ namespace Docker.Proxy.AppTwo.Controllers
             ViewBag.Id = id;
             return View();
         }
+
+        [HttpGet("{id}/test")]
+        public IActionResult Nested(string id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
     }
 }
