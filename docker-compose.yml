@@ -50,14 +50,14 @@ services:
       - apptwo
   
   appone:
-    image: ${DOCKER_REGISTRY-}dockerproxyappone
+    image: dockerproxyappone
     build:
       context: .
       dockerfile: app1/Docker.Proxy.AppOne/Dockerfile
     network_mode: bridge
 
   apptwo:
-    image: ${DOCKER_REGISTRY-}dockerproxyapptwo
+    image: dockerproxyapptwo
     build:
       context: .
       dockerfile: app2/Docker.Proxy.AppTwo/Dockerfile
